@@ -71,26 +71,24 @@ class Redirector extends React.Component<RouteComponentProps, State> {
 				code: this.code
 			}
 		}).then( res => {
-			this.state = {
+			this.setState({
 				authingState: AuthingState.SUCCESS,
-				result: res
-			}
-			
+				result: res.data
+			})
 		}).catch( error => {
-			this.state = {
+			this.setState({
 				authingState: AuthingState.ERROR,
-				result: error
-			}
-			
+				result: error.toString()
+            })
 		})
 	}
 
 	render() {
 		if(!this.code) return <Redirect to='/' />
 
-		if (this.state.authingState === AuthingState.SUCCESS) {
+		if (this.state.authingState == AuthingState.SUCCESS) {
 			return <Redirect to={{ pathname: '/success', state: { res: this.state.result }}} />
-		} else if (this.state.authingState === AuthingState.ERROR) {
+		} else if (this.state.authingState == AuthingState.ERROR) {
 			return <Redirect to={{ pathname: '/error', state: { error: this.state.result }}} />
 		}
 

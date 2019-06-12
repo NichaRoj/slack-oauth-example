@@ -22,7 +22,7 @@ router.get('/token', function(req, res) {
         code: req.query.code,
         redirect_uri: process.env.REDIRECT_URI
     }).then( json => {
-        res.status(200).send(json)
+        res.status(200).json(json)
     }).catch( error => {
         console.log(error)
         res.status(500).send(error)
