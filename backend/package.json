@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "NODE_ENV=development nodemon -r dotenv/config ./index.ts"
+    "start": "NODE_ENV=development nodemon -r dotenv/config ./index.ts",
+    "build": "NODE_ENV=production ts-node ./index.ts"
   },
   "dependencies": {
     "@slack/web-api": "^5.0.1",
@@ -13,7 +14,8 @@
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
-    "morgan": "~1.9.1"
+    "morgan": "~1.9.1",
+    "ts-node": "^8.3.0"
   },
   "devDependencies": {
     "@types/node": "^12.0.7",
