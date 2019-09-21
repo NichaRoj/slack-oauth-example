@@ -1,0 +1,10 @@
+steps:
+  - name: "gcr.io/cloud-builders/yarn"
+    args: ["install", "--silent", "--ignore-engines"]
+    dir: "./frontend"
+  - name: "gcr.io/cloud-builders/yarn"
+    args: ["build"]
+    dir: "./frontend"
+  - name: "gcr.io/$PROJECT_ID/firebase"
+    args: ["deploy", "-P", "$PROJECT_ID", "--token", "$_FIREBASE_TOKEN"]
+    dir: "./frontend"
